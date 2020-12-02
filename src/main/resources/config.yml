@@ -1,0 +1,6 @@
+CAPTCHA:
+  PASSED: "&eYou have passed the captcha!"
+  FAILED: "&cYou have failed the captcha!"
+  ENABLED: true
+  BYPASS: true
+  BYPASS_PERMISSION: "captcha.bypass"
