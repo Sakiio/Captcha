@@ -23,15 +23,14 @@ public class Captcha extends JavaPlugin {
         instance = this;
         reloadConfig();
         saveDefaultConfig();
-        this.registerListeners();
-        this.registerCommands();
+        this.registerlistener();
     }
 
     @Override
     public void onDisable() {
     }
 
-    public void registerCommands() {
+    public void registerlistener() {
         this.registerListeners(
                 new JoinEvent()
         );
