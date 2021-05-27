@@ -1,6 +1,6 @@
 name: Captcha
 version: ${project.version}
 main: me.sakio.captcha.Captcha
-api-version: 1.16
+api-version: 1.8
 authors: [Sakio_]
 description: Simple Captcha

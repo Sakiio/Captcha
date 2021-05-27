@@ -11,7 +11,4 @@ public class Color {
         return ChatColor.translateAlternateColorCodes('&', translate);
     }
 
-    public static List<String> translate(List<String> strings) {
-        return strings.stream().map(Color::translate).collect(Collectors.toList());
-    }
 }

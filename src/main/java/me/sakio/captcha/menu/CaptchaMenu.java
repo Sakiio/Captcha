@@ -2,7 +2,6 @@ package me.sakio.captcha.menu;
 
 import me.sakio.captcha.Captcha;
 import me.sakio.captcha.utils.ItemBuilder;
-import me.sakio.captcha.utils.ItemMaker;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

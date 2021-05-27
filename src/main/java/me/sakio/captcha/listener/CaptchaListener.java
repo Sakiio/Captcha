@@ -18,7 +18,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
  * Date: 02/12/2020 @ 18:07
  * Class: JoinEvent
  */
-public class JoinEvent implements Listener {
+public class CaptchaListener implements Listener {
 
     @EventHandler
     public void onCaptchaClose(InventoryCloseEvent event) {
@@ -47,7 +47,6 @@ public class JoinEvent implements Listener {
 
     @EventHandler
     public void onPlayerJoinEvent(PlayerJoinEvent event) {
-        Player player = event.getPlayer();
         if (Captcha.getInstance().getConfig().getBoolean("CAPTCHA.ENABLED")) {
             if (Captcha.getInstance().getConfig().getBoolean("CAPTCHA.BYPASS")) {
                 if (!event.getPlayer().hasPermission(Captcha.getInstance().getConfig().getString("CAPTCHA.BYPASS_PERMISSION"))) {

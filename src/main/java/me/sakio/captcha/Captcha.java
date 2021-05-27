@@ -1,7 +1,7 @@
 package me.sakio.captcha;
 
 import lombok.Getter;
-import me.sakio.captcha.listener.JoinEvent;
+import me.sakio.captcha.listener.CaptchaListener;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
@@ -13,9 +13,7 @@ import java.util.List;
 
 @Getter
 public class Captcha extends JavaPlugin {
-    @Getter
     private static Captcha instance;
-    @Getter
     private static final List<Player> captchaList = new ArrayList<>();
 
     @Override
@@ -23,19 +21,25 @@ public class Captcha extends JavaPlugin {
         instance = this;
         reloadConfig();
         saveDefaultConfig();
-        this.registerlistener();
+        this.registerListener();
     }
 
     @Override
-    public void onDisable() {
+    public void onDisable() {}
+
+    public void registerListener() {
+        this.registerListeners(new CaptchaListener());
     }
 
-    public void registerlistener() {
-        this.registerListeners(
-                new JoinEvent()
-        );
-    }
     private void registerListeners(Listener... listeners) {
         Arrays.stream(listeners).forEach(l -> Bukkit.getServer().getPluginManager().registerEvents(l, this));
+    }
+
+    public static Captcha getInstance(){
+        return Captcha.getPlugin(Captcha.class);
+    }
+
+    public static List<Player> getCaptchaList(){
+        return captchaList;
     }
 }
