@@ -20,7 +20,6 @@ public class CaptchaMenu {
     public static void openCaptcha(Player player) {
         Inventory inventory = Bukkit.createInventory(null, 9, ChatColor.RED + "Click the emerald block!");
         Random random = new Random();
-
         int rand = random.nextInt(9);
 
         for(int i = 0; i < 9; i++){

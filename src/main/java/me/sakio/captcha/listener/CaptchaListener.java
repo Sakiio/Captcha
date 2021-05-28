@@ -24,9 +24,8 @@ public class CaptchaListener implements Listener {
     public void onCaptchaClose(InventoryCloseEvent event) {
         if (event.getInventory().getName().equals(ChatColor.RED + "Click the emerald block!")) {
             Player player = (Player) event.getPlayer();
-
             if (!Captcha.getCaptchaList().contains(player))
-                player.kickPlayer(Color.translate(Captcha.getInstance().getConfig().getString("CAPTCHA.FAILED")));
+                player.kickPlayer(Color.translate(Captcha.getInstance().getConfig().getString("FAILED")));
         }
     }
 
@@ -36,20 +35,20 @@ public class CaptchaListener implements Listener {
         if (event.getInventory().getTitle().equals(ChatColor.RED + "Click the emerald block!")) {
             event.setCancelled(true);
             if (event.getCurrentItem() != null && !event.getCurrentItem().getType().equals(Material.EMERALD_BLOCK)) {
-                player.sendMessage(Color.translate(Captcha.getInstance().getConfig().getString("CAPTCHA.FAILED")));
+                player.sendMessage(Color.translate(Captcha.getInstance().getConfig().getString("FAILED")));
                 return;
             }
             Captcha.getCaptchaList().add(player);
             player.closeInventory();
-            player.sendMessage(Color.translate(Captcha.getInstance().getConfig().getString("CAPTCHA.PASSED")));
+            player.sendMessage(Color.translate(Captcha.getInstance().getConfig().getString("PASSED")));
         }
     }
 
     @EventHandler
     public void onPlayerJoinEvent(PlayerJoinEvent event) {
-        if (Captcha.getInstance().getConfig().getBoolean("CAPTCHA.ENABLED")) {
-            if (Captcha.getInstance().getConfig().getBoolean("CAPTCHA.BYPASS")) {
-                if (!event.getPlayer().hasPermission(Captcha.getInstance().getConfig().getString("CAPTCHA.BYPASS_PERMISSION"))) {
+        if (Captcha.getInstance().getConfig().getBoolean("ENABLED")) {
+            if (Captcha.getInstance().getConfig().getBoolean("BYPASS")) {
+                if (!event.getPlayer().hasPermission(Captcha.getInstance().getConfig().getString("BYPASS_PERMISSION"))) {
                     CaptchaMenu.openCaptcha(event.getPlayer());
                 }
             } else {
