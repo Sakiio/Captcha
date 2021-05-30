@@ -18,7 +18,6 @@ public class Captcha extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        instance = this;
         reloadConfig();
         saveDefaultConfig();
         this.registerListener();
