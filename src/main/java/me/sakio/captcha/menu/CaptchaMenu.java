@@ -1,6 +1,6 @@
 package me.sakio.captcha.menu;
 
-import me.sakio.captcha.Captcha;
+import me.sakio.captcha.CaptchaPlugin;
 import me.sakio.captcha.utils.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -28,6 +28,6 @@ public class CaptchaMenu {
             }
         }
         inventory.setItem(rand, new ItemBuilder(Material.EMERALD_BLOCK).toItemStack());
-        Bukkit.getScheduler().runTask(Captcha.getInstance(), () -> player.openInventory(inventory));
+        Bukkit.getScheduler().runTask(CaptchaPlugin.getInstance(), () -> player.openInventory(inventory));
     }
 }

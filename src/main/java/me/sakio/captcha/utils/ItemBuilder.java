@@ -5,6 +5,7 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 public class ItemBuilder {
+
     private final ItemStack is;
 
     public ItemBuilder(Material m) {

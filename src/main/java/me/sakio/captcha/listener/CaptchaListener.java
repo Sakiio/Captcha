@@ -1,6 +1,6 @@
 package me.sakio.captcha.listener;
 
-import me.sakio.captcha.Captcha;
+import me.sakio.captcha.CaptchaPlugin;
 import me.sakio.captcha.menu.CaptchaMenu;
 import me.sakio.captcha.utils.Color;
 import org.bukkit.ChatColor;
@@ -24,8 +24,8 @@ public class CaptchaListener implements Listener {
     public void onCaptchaClose(InventoryCloseEvent event) {
         if (event.getInventory().getName().equals(ChatColor.RED + "Click the emerald block!")) {
             Player player = (Player) event.getPlayer();
-            if (!Captcha.getCaptchaList().contains(player))
-                player.kickPlayer(Color.translate(Captcha.getInstance().getConfig().getString("FAILED")));
+            if (!CaptchaPlugin.getCaptchaList().contains(player))
+                player.kickPlayer(Color.translate(CaptchaPlugin.getInstance().getConfig().getString("FAILED")));
         }
     }
 
@@ -35,25 +35,12 @@ public class CaptchaListener implements Listener {
         if (event.getInventory().getTitle().equals(ChatColor.RED + "Click the emerald block!")) {
             event.setCancelled(true);
             if (event.getCurrentItem() != null && !event.getCurrentItem().getType().equals(Material.EMERALD_BLOCK)) {
-                player.sendMessage(Color.translate(Captcha.getInstance().getConfig().getString("FAILED")));
+                player.sendMessage(Color.translate(CaptchaPlugin.getInstance().getConfig().getString("FAILED")));
                 return;
             }
-            Captcha.getCaptchaList().add(player);
+            CaptchaPlugin.getCaptchaList().add(player);
             player.closeInventory();
-            player.sendMessage(Color.translate(Captcha.getInstance().getConfig().getString("PASSED")));
-        }
-    }
-
-    @EventHandler
-    public void onPlayerJoinEvent(PlayerJoinEvent event) {
-        if (Captcha.getInstance().getConfig().getBoolean("ENABLED")) {
-            if (Captcha.getInstance().getConfig().getBoolean("BYPASS")) {
-                if (!event.getPlayer().hasPermission(Captcha.getInstance().getConfig().getString("BYPASS_PERMISSION"))) {
-                    CaptchaMenu.openCaptcha(event.getPlayer());
-                }
-            } else {
-                CaptchaMenu.openCaptcha(event.getPlayer());
-            }
+            player.sendMessage(Color.translate(CaptchaPlugin.getInstance().getConfig().getString("PASSED")));
         }
     }
 }
