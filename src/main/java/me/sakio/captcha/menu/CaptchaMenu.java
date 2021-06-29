@@ -27,6 +27,7 @@ public class CaptchaMenu {
                 inventory.setItem(i, new ItemBuilder(Material.REDSTONE_BLOCK).toItemStack());
             }
         }
+
         inventory.setItem(rand, new ItemBuilder(Material.EMERALD_BLOCK).toItemStack());
         Bukkit.getScheduler().runTask(CaptchaPlugin.getInstance(), () -> player.openInventory(inventory));
     }
