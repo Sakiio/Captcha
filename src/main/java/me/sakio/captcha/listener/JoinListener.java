@@ -16,12 +16,10 @@ public class JoinListener implements Listener {
     public void onPlayerJoinEvent(PlayerJoinEvent event) {
         if (CaptchaPlugin.getInstance().getConfig().getBoolean("ENABLED")) {
             if (CaptchaPlugin.getInstance().getConfig().getBoolean("BYPASS")) {
-                if (!event.getPlayer().hasPermission(CaptchaPlugin.getInstance().getConfig().getString("BYPASS_PERMISSION"))) {
+                if (!event.getPlayer().hasPermission(CaptchaPlugin.getInstance().getConfig().getString("BYPASS_PERMISSION")))
                     CaptchaMenu.openCaptcha(event.getPlayer());
-                }
-            } else {
+            } else
                 CaptchaMenu.openCaptcha(event.getPlayer());
-            }
         }
     }
 }

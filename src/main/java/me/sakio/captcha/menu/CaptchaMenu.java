@@ -23,9 +23,8 @@ public class CaptchaMenu {
         int rand = random.nextInt(9);
 
         for(int i = 0; i < 9; i++){
-            if(!(rand == i)){
+            if(!(rand == i))
                 inventory.setItem(i, new ItemBuilder(Material.REDSTONE_BLOCK).toItemStack());
-            }
         }
 
         inventory.setItem(rand, new ItemBuilder(Material.EMERALD_BLOCK).toItemStack());
