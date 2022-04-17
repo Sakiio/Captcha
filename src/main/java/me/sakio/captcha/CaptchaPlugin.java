@@ -1,6 +1,5 @@
 package me.sakio.captcha;
 
-import lombok.Getter;
 import me.sakio.captcha.listener.CaptchaListener;
 import me.sakio.captcha.listener.JoinListener;
 import org.bukkit.entity.Player;
@@ -10,7 +9,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
 public class CaptchaPlugin extends JavaPlugin {
     private static final List<Player> playerArrayList = new ArrayList<>();
 
@@ -19,7 +17,7 @@ public class CaptchaPlugin extends JavaPlugin {
         reloadConfig();
         saveDefaultConfig();
         PluginManager pluginManager = getServer().getPluginManager();
-        pluginManager.registerEvents(new CaptchaListener(), this);
+        pluginManager.registerEvents(new CaptchaListener(this), this);
         pluginManager.registerEvents(new JoinListener(), this);
     }
 
